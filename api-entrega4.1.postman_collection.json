@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "nivel1",
+			"name": "nivel1-ejercicio1",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -19,6 +19,24 @@
 					"port": "3000",
 					"path": [
 						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nivel1-ejercicio2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/upload",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"upload"
 					]
 				}
 			},
