@@ -29,6 +29,16 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
 				"url": {
 					"raw": "localhost:3000/upload",
 					"host": [
@@ -37,6 +47,27 @@
 					"port": "3000",
 					"path": [
 						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nivel2-ejercicio1/2",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/time",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"time"
 					]
 				}
 			},
