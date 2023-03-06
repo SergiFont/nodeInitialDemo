@@ -18,6 +18,8 @@ app.use('/user', userRouter)
 app.use('/upload', uploadRouter)
 
 app.use('/time', timeRouter)
+
+// app.use('/pokemon/{id}')
   
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
