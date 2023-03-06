@@ -1,43 +1,41 @@
 const https = require('https')
 
-
 const showPokemon = (req, res) => {
+  const pokemonID = req.params.id
+  if(isNaN(Number(pokemonID))) return res.status(400).send('The id should be a number')
     const options = {
         hostname: 'pokeapi.co',
-        path: '/api/v2/pokemon/ditto',
+        path: `/api/v2/pokemon/${pokemonID}`,
         method: 'GET',
         port: 443
-      };
+      }
+
+      const processData = (apiRes) => { 
+          let data = '';
+          apiRes.on('data', chunk => {
+            data += chunk;
+          });
+          apiRes.on('end', () => {
+            if(data === 'Not Found') return res.status(404).send('This pokemon does not exist. Yet.')
+            const pokemon = JSON.parse(data);
+            const result = `The name of this pokemon is ${pokemon.name}. His height is ${Number(pokemon.height) * 10}cm, and it weighs ${Number(pokemon.weight) / 10}kg.`
+            return res.send(result)
+          });
+          
+      }
     
       const petition = https.request(options, apiRes => {
-        console.log(`statusCode: ${apiRes.statusCode}`)
-        
-        // If the response is a 301 redirect
-        if (apiRes.statusCode === 301) {
-          const newUrl = apiRes.headers.location;
-          console.log(`Resource has been moved to ${newUrl}`);
-          // Redirect the request to the new URL
-          const redirectRequest = https.request(newUrl, newRes => {
-            console.log(`Redirect statusCode: ${newRes.statusCode}`);
-            // Handle the response here
-          });
-          redirectRequest.end();
-          return;
-        }
-        
-        // Handle other response codes here
-        apiRes.on('data', d => {
-          process.stdout.write(d)
-        })
-      });
-      
+         processData(apiRes)
+      })
+
+
       petition.on('error', error => {
-        console.error(error);
+        console.error(error)
         res.statusCode = 500
         res.end()
-      });
+      })
       
       petition.end();
     }
 
-module.exports = showPokemon
+module.exports = {showPokemon}

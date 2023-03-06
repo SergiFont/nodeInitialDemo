@@ -20,7 +20,7 @@ app.use('/upload', uploadRouter)
 
 app.use('/time', timeRouter)
 
-app.use('/pokemon/test', pokeRouter)
+app.use('/pokemon', pokeRouter)
   
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
