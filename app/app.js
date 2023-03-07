@@ -7,7 +7,7 @@ const timeRouter = require('./routes/time.js')
 const pokeRouter = require('./routes/pokemon.js')
 
 const app = express()
-const port = 3000
+const port = process.env.DATABASE_PORT
 app.use(fileUpload())
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
