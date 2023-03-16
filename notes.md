@@ -17,6 +17,7 @@ Nivell 3
 - Exercici 1
 Crea una petició GET a l'endpoint /pokemon/{id} que rebi un número de Pokémon, faci una cerca al Pokémon API i retorni el nom del Pokémon, la seva alçada i el seu pes.
 
+Cambio en el validator
 
 
 morgan
