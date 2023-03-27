@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const useCORS = require('../middlewares/setCORS.js')
+const setCORS = require('../middlewares/setCORS.js')
 
-router.use(useCORS)
+router.use(setCORS)
 
 router.get('/', (req, res) => {
     const response = {
